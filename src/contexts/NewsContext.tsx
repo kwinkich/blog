@@ -10,10 +10,12 @@ const NewssContext = createContext<{
 	newss: News[];
 	createNews: (news: News) => void;
 	editNews: (news: News) => void;
+	deleteNews: (newsId: number) => void;
 }>({
 	newss: [],
 	createNews: () => {},
 	editNews: () => {},
+	deleteNews: () => {},
 });
 
 export const NewsProvider: React.FC<{ children: ReactNode }> = ({
@@ -33,12 +35,17 @@ export const NewsProvider: React.FC<{ children: ReactNode }> = ({
 		);
 	};
 
+	const deleteNews = (newsId: number) => {
+		setNewss((prevNews) => prevNews.filter((news) => news.id !== newsId));
+	};
+
 	return (
 		<NewssContext.Provider
 			value={{
 				newss,
 				createNews,
 				editNews,
+				deleteNews,
 			}}
 		>
 			{children}

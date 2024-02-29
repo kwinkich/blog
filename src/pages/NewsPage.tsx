@@ -11,7 +11,7 @@ export default function NewsPage() {
 	const [newsName, setNewsName] = useState<string>('');
 	const [newsDescription, setNewsDescription] = useState<string>('');
 	const { id } = useParams();
-	const { newss, editNews } = useNews();
+	const { newss, editNews, deleteNews } = useNews();
 
 	const news = id
 		? newss.find((news) => news.id === parseInt(id, 10))
@@ -34,13 +34,18 @@ export default function NewsPage() {
 				<Link to={`/`}>
 					<p className='text-lg text-gray-200 mb-5'> back</p>
 				</Link>
-				<h1 className='text-4xl text-white font-bold mb-10'>{news?.name}</h1>
+				<h1 className='text-4xsl text-white font-bold mb-10'>{news?.name}</h1>
 				{!isEdit ? (
 					<>
 						<div>
 							<p className='text-xl text-white mb-5'>{news?.description}</p>
 						</div>
-						<Button click={() => setIsEdit(true)}>Edit</Button>
+						<div className='flex gap-x-3 items-center'>
+							<Button click={() => setIsEdit(true)}>Edit</Button>
+							<Link to={`/`}>
+								<Button click={() => deleteNews(news?.id || 0)}>Delete</Button>
+							</Link>
+						</div>
 					</>
 				) : (
 					<div className='flex flex-col gap-y-4 max-w-[40%]'>

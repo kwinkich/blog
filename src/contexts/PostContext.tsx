@@ -11,10 +11,12 @@ const PostsContext = createContext<{
 	posts: Post[];
 	createPost: (post: Post) => void;
 	editPost: (post: Post) => void;
+	deletePost: (postId: number) => void;
 }>({
 	posts: [],
 	createPost: () => {},
 	editPost: () => {},
+	deletePost: () => {},
 });
 
 export const PostProvider: React.FC<{ children: ReactNode }> = ({
@@ -34,12 +36,17 @@ export const PostProvider: React.FC<{ children: ReactNode }> = ({
 		);
 	};
 
+	const deletePost = (postId: number) => {
+		setPosts((prevPost) => prevPost.filter((post) => post.id !== postId));
+	};
+
 	return (
 		<PostsContext.Provider
 			value={{
 				posts,
 				createPost,
 				editPost,
+				deletePost,
 			}}
 		>
 			{children}

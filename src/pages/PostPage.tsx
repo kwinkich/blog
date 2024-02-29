@@ -13,7 +13,7 @@ export default function PostPage() {
 	const [postTags, setPostTags] = useState<string[]>([]);
 	const [isEdit, setIsEdit] = useState<boolean>(false);
 	const { id } = useParams();
-	const { posts, editPost } = usePost();
+	const { posts, editPost, deletePost } = usePost();
 
 	const post = id
 		? posts.find((post) => post.id === parseInt(id, 10))
@@ -52,7 +52,12 @@ export default function PostPage() {
 									))}
 							</div>
 						</div>
-						<Button click={() => setIsEdit(true)}>Edit</Button>
+						<div className='flex gap-x-3 items-center'>
+							<Button click={() => setIsEdit(true)}>Edit</Button>
+							<Link to={`/`}>
+								<Button click={() => deletePost(post?.id || 0)}>Delete</Button>
+							</Link>
+						</div>
 					</>
 				) : (
 					<div className='flex flex-col gap-y-4 max-w-[40%]'>
