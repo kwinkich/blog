@@ -4,6 +4,7 @@ import { PostProvider } from './contexts/PostContext';
 import CreateNewsPage from './pages/CreateNewsPage';
 import CreatePostPage from './pages/CreatePostPage';
 import MainPage from './pages/MainPage';
+import NewsPage from './pages/NewsPage';
 import PostPage from './pages/PostPage';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 						<Route path='/createPost' element={<CreatePostPage />} />
 						<Route path='/createNews' element={<CreateNewsPage />} />
 						<Route path='/post/:id' element={<PostPage />} />
+						<Route path='/news/:id' element={<NewsPage />} />
 					</Routes>
 				</NewsProvider>
 			</PostProvider>

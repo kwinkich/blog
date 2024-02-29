@@ -9,6 +9,7 @@ import { usePost } from '../contexts/PostContext';
 export default function CreatePostPage() {
 	const [postName, setPostName] = useState<string>('');
 	const [postDescription, setPostDescription] = useState<string>('');
+	const [postTags, setPostTags] = useState<string[]>([]);
 	const { posts, createPost } = usePost();
 
 	const handleCreatePost = () => {
@@ -16,7 +17,7 @@ export default function CreatePostPage() {
 			name: postName,
 			description: postDescription,
 			id: posts.length + 1,
-			tags: ['der', 'cmer'],
+			tags: postTags,
 		};
 		createPost(newPost);
 		console.log(posts);
@@ -40,6 +41,13 @@ export default function CreatePostPage() {
 						<Input
 							placeholder='Post Content'
 							onChange={(e) => setPostDescription(e.target.value)}
+						/>
+					</div>
+					<div className='flex items-center gap-x-3 justify-between'>
+						<Label labelContent='Post Content' />
+						<Input
+							placeholder='Post Tag'
+							onChange={(e) => setPostTags(e.target.value.split(','))}
 						/>
 					</div>
 					<Button click={handleCreatePost}>Create Post</Button>
