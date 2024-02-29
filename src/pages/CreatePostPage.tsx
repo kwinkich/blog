@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button/Button';
 import { Header } from '../components/Header/Header';
@@ -21,10 +21,6 @@ export default function CreatePostPage() {
 		createPost(newPost);
 		console.log(posts);
 	};
-
-	useEffect(() => {
-		console.log(posts);
-	}, [posts]);
 
 	return (
 		<section className='container mx-auto max-w-[65%]'>

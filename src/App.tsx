@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { NewsProvider } from './contexts/NewContext';
+import { NewsProvider } from './contexts/NewsContext';
 import { PostProvider } from './contexts/PostContext';
 import CreateNewsPage from './pages/CreateNewsPage';
 import CreatePostPage from './pages/CreatePostPage';

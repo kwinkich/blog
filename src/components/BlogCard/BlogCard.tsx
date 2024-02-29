@@ -5,7 +5,6 @@ import { Button } from '../Button/Button';
 import { Tag } from '../Tag/Tag';
 
 interface BlogCardProps {
-	id: number;
 	data: Post;
 	postKey: string;
 }

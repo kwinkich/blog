@@ -18,7 +18,7 @@ export default function MainPage() {
 					) : (
 						<div className='max-w-max grid lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-x-16 gap-y-16'>
 							{posts.map((post) => (
-								<BlogCard id={post.id} postKey={post.name} data={post} />
+								<BlogCard postKey={post.name} data={post} />
 							))}
 						</div>
 					)}
