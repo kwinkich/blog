@@ -1,24 +1,25 @@
-import React from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { NewsProvider } from './contexts/NewContext';
+import { PostProvider } from './contexts/PostContext';
+import CreateNewsPage from './pages/CreateNewsPage';
 import CreatePostPage from './pages/CreatePostPage';
 import MainPage from './pages/MainPage';
-
-const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <MainPage />,
-	},
-	{
-		path: '/createPost',
-		element: <CreatePostPage />,
-	},
-]);
+import PostPage from './pages/PostPage';
 
 function App() {
 	return (
-		<React.StrictMode>
-			<RouterProvider router={router} />
-		</React.StrictMode>
+		<Router>
+			<PostProvider>
+				<NewsProvider>
+					<Routes>
+						<Route path='/' element={<MainPage />} />
+						<Route path='/createPost' element={<CreatePostPage />} />
+						<Route path='/createNews' element={<CreateNewsPage />} />
+						<Route path='/post/:id' element={<PostPage />} />
+					</Routes>
+				</NewsProvider>
+			</PostProvider>
+		</Router>
 	);
 }
 
