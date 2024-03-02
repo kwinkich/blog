@@ -14,7 +14,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ data, postKey }) => {
 		<Link to={`/post/${data.id}`}>
 			<div
 				key={postKey}
-				className='border-2 border-gray-100 w-[400px] hover:bg-neutral-900 duration-300 ease-in-out'
+				className='border-2 border-gray-100 w-[355px] hover:bg-neutral-900 duration-300 ease-in-out'
 			>
 				<div className='flex flex-col px-10 py-8'>
 					<h3 className='text-2xl text-white font-semibold'>{data.name}</h3>

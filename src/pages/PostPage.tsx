@@ -31,26 +31,26 @@ export default function PostPage() {
 	};
 
 	return (
-		<section className='container mx-auto max-w-[65%]'>
+		<section className='section'>
 			<Header />
 			<div>
 				<Link to={`/`}>
-					<p className='text-lg text-gray-200 mb-5'> back</p>
+					<p className='back'>&lt; back</p>
 				</Link>
-				<h1 className='text-4xl text-white font-bold mb-10'>{post?.name}</h1>
+				<h1 className='h1 mb-5'>{post?.name}</h1>
 				{!isEdit ? (
 					<>
-						<div>
-							<p className='text-xl text-white mb-10'>{post?.description}</p>
-						</div>
-						<div>
-							<p className='text-lg text-gray-200 mb-3'>Tags</p>
-							<div className='flex gap-x-2 mb-5'>
+						<div className='flex gap-x-3 mb-10 items-center'>
+							<p className='text-lg text-gray-200'>Tags: </p>
+							<div className='flex gap-x-2'>
 								{post &&
 									Object.values(post?.tags).map((tag, index) => (
 										<Tag key={index}>{tag}</Tag>
 									))}
 							</div>
+						</div>
+						<div>
+							<p className='description'>{post?.description}</p>
 						</div>
 						<div className='flex gap-x-3 items-center'>
 							<Button click={() => setIsEdit(true)}>Edit</Button>
@@ -60,22 +60,22 @@ export default function PostPage() {
 						</div>
 					</>
 				) : (
-					<div className='flex flex-col gap-y-4 max-w-[40%]'>
-						<div className='flex items-center gap-x-3 justify-between '>
+					<div className='form-block'>
+						<div className='form'>
 							<Label labelContent='Post name' />
 							<Input
 								placeholder='Post Name'
 								onChange={(e) => setPostName(e.target.value)}
 							/>
 						</div>
-						<div className='flex items-center gap-x-3 justify-between'>
+						<div className='form'>
 							<Label labelContent='Post Content' />
 							<Input
 								placeholder='Post Content'
 								onChange={(e) => setPostDescription(e.target.value)}
 							/>
 						</div>
-						<div className='flex items-center gap-x-3 justify-between'>
+						<div className='form'>
 							<Label labelContent='Post Content' />
 							<Input
 								placeholder='Post Tag'

@@ -10,7 +10,7 @@ export const LastUpdates = () => {
 				Last Updates
 			</h2>
 			{newss.length === 0 ? (
-				<p>Empty</p>
+				<p className='text-xl text-white'>Empty</p>
 			) : (
 				<div className='flex flex-col gap-y-4'>
 					{newss.map((news) => {

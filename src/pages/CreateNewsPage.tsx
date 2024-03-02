@@ -22,19 +22,19 @@ export default function CreateNewsPage() {
 	}
 
 	return (
-		<section className='container mx-auto max-w-[65%]'>
+		<section className='section'>
 			<Header />
 			<div>
-				<h1 className='text-4xl text-white font-bold mb-10'>Create New</h1>
-				<div className='flex flex-col gap-y-6 max-w-[40%]'>
-					<div className='flex items-center gap-x-3 justify-between'>
+				<h1 className='h1 mb-10'>Create New</h1>
+				<div className='form-block'>
+					<div className='form'>
 						<Label labelContent='New name' />
 						<Input
 							placeholder='New Name'
 							onChange={(e) => setNewsName(e.target.value)}
 						/>
 					</div>
-					<div className='flex items-center gap-x-3 justify-between'>
+					<div className='form'>
 						<Label labelContent='New Content' />
 						<Input
 							placeholder='New Content'

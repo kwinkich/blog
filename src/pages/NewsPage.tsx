@@ -28,17 +28,17 @@ export default function NewsPage() {
 	}
 
 	return (
-		<section className='container mx-auto max-w-[65%]'>
+		<section className='section'>
 			<Header />
 			<div>
 				<Link to={`/`}>
-					<p className='text-lg text-gray-200 mb-5'> back</p>
+					<p className='back'> &lt; back</p>
 				</Link>
-				<h1 className='text-4xsl text-white font-bold mb-10'>{news?.name}</h1>
+				<h1 className='h1 mb-10'>{news?.name}</h1>
 				{!isEdit ? (
 					<>
 						<div>
-							<p className='text-xl text-white mb-5'>{news?.description}</p>
+							<p className='description'>{news?.description}</p>
 						</div>
 						<div className='flex gap-x-3 items-center'>
 							<Button click={() => setIsEdit(true)}>Edit</Button>
@@ -48,15 +48,15 @@ export default function NewsPage() {
 						</div>
 					</>
 				) : (
-					<div className='flex flex-col gap-y-4 max-w-[40%]'>
-						<div className='flex items-center gap-x-3 justify-between '>
+					<div className='form-block'>
+						<div className='form'>
 							<Label labelContent='News name' />
 							<Input
 								placeholder='News Name'
 								onChange={(e) => setNewsName(e.target.value)}
 							/>
 						</div>
-						<div className='flex items-center gap-x-3 justify-between'>
+						<div className='form'>
 							<Label labelContent='News Content' />
 							<Input
 								placeholder='News Content'

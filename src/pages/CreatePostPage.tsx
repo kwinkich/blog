@@ -24,26 +24,26 @@ export default function CreatePostPage() {
 	};
 
 	return (
-		<section className='container mx-auto max-w-[65%]'>
+		<section className='section'>
 			<Header />
 			<div>
-				<h1 className='text-4xl text-white font-bold mb-10'>Create Post</h1>
-				<div className='flex flex-col gap-y-6 max-w-[40%]'>
-					<div className='flex items-center gap-x-3 justify-between'>
+				<h1 className='h1 mb-10'>Create Post</h1>
+				<div className='form-block'>
+					<div className='form'>
 						<Label labelContent='Post name' />
 						<Input
 							placeholder='Post Name'
 							onChange={(e) => setPostName(e.target.value)}
 						/>
 					</div>
-					<div className='flex items-center gap-x-3 justify-between'>
+					<div className='form'>
 						<Label labelContent='Post Content' />
 						<Input
 							placeholder='Post Content'
 							onChange={(e) => setPostDescription(e.target.value)}
 						/>
 					</div>
-					<div className='flex items-center gap-x-3 justify-between'>
+					<div className='form'>
 						<Label labelContent='Post Content' />
 						<Input
 							placeholder='Post Tag'

@@ -7,16 +7,16 @@ export default function MainPage() {
 	const { posts } = usePost();
 
 	return (
-		<main className='container mx-auto max-w-[65%]'>
+		<main className='section'>
 			<Header />
 			<div className='flex justify-between'>
 				<div>
-					<h1 className='text-4xl text-white font-bold mb-10'>Articles</h1>
+					<h1 className='h1 mb-10'>Articles</h1>
 
 					{posts.length === 0 ? (
-						<p>Empty</p>
+						<p className='text-xl text-white'>Empty</p>
 					) : (
-						<div className='max-w-max grid lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-x-16 gap-y-16'>
+						<div className='max-w-max grid lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-x-7 gap-y-7'>
 							{posts.map((post) => (
 								<BlogCard postKey={post.name} data={post} />
 							))}

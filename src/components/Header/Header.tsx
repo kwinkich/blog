@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 export const Header = () => {
 	return (
-		<header className='flex justify-between items-center mt-10 mb-20'>
-			<h1 className='text-2xl text-white leading-6'>
+		<header className='flex justify-between items-center py-10 mb-24'>
+			<h1 className='text-2xl text-white leading-5 font-bold'>
 				kwinkich
 				<br />
 				blog

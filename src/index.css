@@ -8,3 +8,34 @@
     font-family: "Inter", sans-serif;
   }
 }
+
+
+@layer components {
+  .section {
+    @apply container mx-auto max-w-[65%];
+  }
+
+  .h1 {
+    @apply text-4xl text-white font-bold
+  }
+
+  .flex-flex-col {
+    @apply flex flex-col;
+  }
+
+  .form-block {
+    @apply flex flex-col gap-y-4 max-w-[40%];
+  }
+
+  .form {
+    @apply flex items-center gap-x-3 justify-between;
+  }
+
+  .back {
+    @apply text-lg text-gray-200 mb-5;
+  }
+
+  .description {
+    @apply text-xl text-white mb-5;
+  }
+}
