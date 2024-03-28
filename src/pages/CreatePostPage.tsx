@@ -1,26 +1,31 @@
+// import { useState } from 'react';
+import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button/Button';
 import { Header } from '../components/Header/Header';
 import { Input } from '../components/Input/Input';
 import { Label } from '../components/Label/Label';
-import { usePost } from '../contexts/PostContext';
 
 export default function CreatePostPage() {
-	const [postName, setPostName] = useState<string>('');
+	const [postTitle, setPostTitle] = useState<string>('');
 	const [postDescription, setPostDescription] = useState<string>('');
-	const [postTags, setPostTags] = useState<string[]>([]);
-	const { posts, createPost } = usePost();
+	const [postTags, setPostTags] = useState<string>('');
 
-	const handleCreatePost = () => {
-		const newPost = {
-			name: postName,
-			description: postDescription,
-			id: posts.length + 1,
-			tags: postTags,
-		};
-		createPost(newPost);
-		console.log(posts);
+	const handleCreatePost = async () => {
+		try {
+			const createdPost = await axios.post(
+				'http://localhost:5050/api/posts/create',
+				{
+					title: postTitle,
+					description: postDescription,
+					tags: postTags,
+				}
+			);
+			console.log(createdPost);
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	return (
@@ -33,7 +38,7 @@ export default function CreatePostPage() {
 						<Label labelContent='Post name' />
 						<Input
 							placeholder='Post Name'
-							onChange={(e) => setPostName(e.target.value)}
+							onChange={(e) => setPostTitle(e.target.value)}
 						/>
 					</div>
 					<div className='form'>
@@ -44,10 +49,10 @@ export default function CreatePostPage() {
 						/>
 					</div>
 					<div className='form'>
-						<Label labelContent='Post Content' />
+						<Label labelContent='Post Tags' />
 						<Input
 							placeholder='Post Tag'
-							onChange={(e) => setPostTags(e.target.value.split(','))}
+							onChange={(e) => setPostTags(e.target.value)}
 						/>
 					</div>
 					<Button click={handleCreatePost}>Create Post</Button>
