@@ -32,7 +32,7 @@ export default function PostPage() {
 		const getPost = async () => {
 			try {
 				const response = await axios.get(
-					`http://localhost:5050/api/posts/${id}`
+					`https://blog-server-ruvh.onrender.com/api/posts/${id}`
 				);
 				setPostData(response.data);
 			} catch (err) {
@@ -45,7 +45,7 @@ export default function PostPage() {
 	const editPost = async () => {
 		try {
 			const response = await axios.put(
-				`http://localhost:5050/api/posts/update/${id}`,
+				`https://blog-server-ruvh.onrender.com/api/posts/update/${id}`,
 				{
 					title: postTitle,
 					description: postDescription,
@@ -62,7 +62,7 @@ export default function PostPage() {
 	const deletePost = async () => {
 		try {
 			const deletedPost = await axios.delete(
-				`http://localhost:5050/api/posts/delete/${id}`
+				`https://blog-server-ruvh.onrender.com/api/posts/delete/${id}`
 			);
 			console.log(deletedPost);
 			return navigate('/');

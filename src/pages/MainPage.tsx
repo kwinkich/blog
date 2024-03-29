@@ -11,7 +11,9 @@ export default function MainPage() {
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
-				const response = await axios.get('http://localhost:5050/api/posts');
+				const response = await axios.get(
+					'https://blog-server-ruvh.onrender.com/api/posts'
+				);
 				setPostsData(response.data);
 			} catch (err) {
 				console.error(err);

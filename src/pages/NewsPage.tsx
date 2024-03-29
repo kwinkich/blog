@@ -29,7 +29,9 @@ export default function NewsPage() {
 	useEffect(() => {
 		const getNewsById = async () => {
 			try {
-				const newData = await axios.get(`http://localhost:5050/api/news/${id}`);
+				const newData = await axios.get(
+					`https://blog-server-ruvh.onrender.com/api/news/${id}`
+				);
 				setNewsData(newData.data);
 			} catch (err) {
 				console.error(err);
@@ -43,7 +45,7 @@ export default function NewsPage() {
 		try {
 			setIsEdit(false);
 			const updatePost = await axios.put(
-				`http://localhost:5050/api/news/update/${id}`,
+				`https://blog-server-ruvh.onrender.com/api/news/update/${id}`,
 				{
 					title: newsTitle,
 					description: newsDescription,
@@ -58,7 +60,7 @@ export default function NewsPage() {
 	const handleDeleteNews = async () => {
 		try {
 			const deletedPost = await axios.delete(
-				`http://localhost:5050/api/news/delete/${id}`
+				`https://blog-server-ruvh.onrender.com/api/news/delete/${id}`
 			);
 			console.log(deletedPost);
 			return navigate('/');

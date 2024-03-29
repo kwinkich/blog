@@ -22,7 +22,7 @@ export default function CreateNewsPage() {
 	const handleCreateNews = async () => {
 		try {
 			const createdNews = await axios.post(
-				'http://localhost:5050/api/news/create',
+				'https://blog-server-ruvh.onrender.com/api/news/create',
 				{
 					title: newsName,
 					description: newsDescription,
