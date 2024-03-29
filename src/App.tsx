@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import CreateNewsPage from './pages/CreateNewsPage';
 import CreatePostPage from './pages/CreatePostPage';
 import MainPage from './pages/MainPage';
-import NewsPage from './pages/NewsPage.1';
+import NewsPage from './pages/NewsPage';
 import PostPage from './pages/PostPage';
 
 function App() {
