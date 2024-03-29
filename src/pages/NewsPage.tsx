@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../components/Button/Button';
 import { Header } from '../components/Header/Header';
@@ -8,12 +9,22 @@ import { Label } from '../components/Label/Label';
 import { News } from '../types/News';
 
 export default function NewsPage() {
+	const [isAdmin, setIsAdmin] = useState<boolean>();
+	const [cookies] = useCookies(['user']);
 	const [newsData, setNewsData] = useState<News>();
 	const [isEdit, setIsEdit] = useState<boolean>(false);
 	const [newsTitle, setNewsTitle] = useState<string>('');
 	const [newsDescription, setNewsDescription] = useState<string>('');
 	const { id } = useParams();
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (cookies.user !== 'kwinkich admin') {
+			setIsAdmin(false);
+		} else {
+			setIsAdmin(true);
+		}
+	}, [cookies.user]);
 
 	useEffect(() => {
 		const getNewsById = async () => {
@@ -26,7 +37,7 @@ export default function NewsPage() {
 		};
 
 		getNewsById();
-	}, []);
+	}, [id]);
 
 	const handleEditNews = async () => {
 		try {
@@ -66,13 +77,21 @@ export default function NewsPage() {
 				<h1 className='h1 mb-10'>{newsData?.title}</h1>
 				{!isEdit ? (
 					<>
-						<div>
-							<p className='description'>{newsData?.description}</p>
-						</div>
-						<div className='flex gap-x-3 items-center'>
-							<Button click={() => setIsEdit(true)}>Edit</Button>
-							<Button click={handleDeleteNews}>Delete</Button>
-						</div>
+						{isAdmin ? (
+							<>
+								<div>
+									<p className='description'>{newsData?.description}</p>
+								</div>
+								<div className='flex gap-x-3 items-center'>
+									<Button click={() => setIsEdit(true)}>Edit</Button>
+									<Button click={handleDeleteNews}>Delete</Button>
+								</div>
+							</>
+						) : (
+							<div>
+								<p className='description'>{newsData?.description}</p>
+							</div>
+						)}
 					</>
 				) : (
 					<div className='form-block'>

@@ -1,16 +1,25 @@
 // import { useState } from 'react';
 import axios from 'axios';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button/Button';
 import { Header } from '../components/Header/Header';
 import { Input } from '../components/Input/Input';
 import { Label } from '../components/Label/Label';
 
 export default function CreatePostPage() {
+	const [cookies] = useCookies(['user']);
 	const [postTitle, setPostTitle] = useState<string>('');
 	const [postDescription, setPostDescription] = useState<string>('');
 	const [postTags, setPostTags] = useState<string>('');
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (cookies.user !== 'kwinkich admin') {
+			return navigate('/');
+		}
+	}, [cookies.user, navigate]);
 
 	const handleCreatePost = async () => {
 		try {
@@ -23,6 +32,7 @@ export default function CreatePostPage() {
 				}
 			);
 			console.log(createdPost);
+			return navigate('/');
 		} catch (err) {
 			console.error(err);
 		}

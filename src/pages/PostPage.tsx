@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../components/Button/Button';
 import { Header } from '../components/Header/Header';
@@ -9,6 +10,8 @@ import { Tag } from '../components/Tag/Tag';
 import { Post } from '../types/Post';
 
 export default function PostPage() {
+	const [cookies] = useCookies(['user']);
+	const [isAdmin, setIsAdmin] = useState<boolean>();
 	const [postData, setPostData] = useState<Post>();
 	const [postTitle, setPostTitle] = useState<string>('');
 	const [postDescription, setPostDescription] = useState<string>('');
@@ -16,6 +19,14 @@ export default function PostPage() {
 	const [isEdit, setIsEdit] = useState<boolean>(false);
 	const { id } = useParams();
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (cookies.user !== 'kwinkich admin') {
+			setIsAdmin(false);
+		} else {
+			setIsAdmin(true);
+		}
+	}, [cookies.user]);
 
 	useEffect(() => {
 		const getPost = async () => {
@@ -78,13 +89,21 @@ export default function PostPage() {
 								))}
 							</div>
 						</div>
-						<div>
-							<p className='description'>{postData?.description}</p>
-						</div>
-						<div className='flex gap-x-3 items-center'>
-							<Button click={() => setIsEdit(true)}>Edit</Button>
-							<Button click={deletePost}>Delete</Button>
-						</div>
+						{isAdmin ? (
+							<>
+								<div>
+									<p className='description'>{postData?.description}</p>
+								</div>
+								<div className='flex gap-x-3 items-center'>
+									<Button click={() => setIsEdit(true)}>Edit</Button>
+									<Button click={deletePost}>Delete</Button>
+								</div>
+							</>
+						) : (
+							<div>
+								<p className='description'>{postData?.description}</p>
+							</div>
+						)}
 					</>
 				) : (
 					<div className='form-block'>

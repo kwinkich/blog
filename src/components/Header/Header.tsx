@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 export const Header = () => {
 	return (
 		<header className='flex justify-between items-center py-10 mb-24'>
@@ -10,18 +8,13 @@ export const Header = () => {
 			</h1>
 			<ul className='flex gap-x-5'>
 				<li>
-					<Link to={`/news`}>
-						<p className='text-lg text-white hover:text-gray-300 duration-300 ease-in-out'>
-							news
-						</p>
-					</Link>
-				</li>
-				<li>
-					<Link to={`/site`}>
-						<p className='text-lg text-white hover:text-gray-300 duration-300 ease-in-out'>
-							site
-						</p>
-					</Link>
+					<a
+						href='https://kwinkich.fun'
+						target='_blank'
+						className='text-lg text-white hover:text-gray-300 duration-300 ease-in-out'
+					>
+						site
+					</a>
 				</li>
 			</ul>
 		</header>

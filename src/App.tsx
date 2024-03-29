@@ -1,12 +1,21 @@
+import { useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-
 import CreateNewsPage from './pages/CreateNewsPage';
 import CreatePostPage from './pages/CreatePostPage';
 import MainPage from './pages/MainPage';
-import NewsPage from './pages/NewsPage';
+import NewsPage from './pages/NewsPage.1';
 import PostPage from './pages/PostPage';
 
 function App() {
+	const [cookies, setCookie] = useCookies(['user']);
+
+	useEffect(() => {
+		if (!cookies.user) {
+			setCookie('user', 'user', { path: '/' });
+		}
+	}, [cookies.user, setCookie]);
+
 	return (
 		<Router>
 			<Routes>
