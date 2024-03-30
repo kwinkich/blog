@@ -39,6 +39,9 @@ export default function PostPage() {
 						))}
 					</div>
 				</div>
+				<div>
+					<p className='description'>{postData?.description}</p>
+				</div>
 			</div>
 		</section>
 	);
