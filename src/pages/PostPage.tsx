@@ -31,9 +31,9 @@ export default function PostPage() {
 					<p className='back'>&lt; back</p>
 				</Link>
 				<h1 className='h1 mb-5'>{postData?.title}</h1>
-				<div className='flex gap-x-3 mb-10 items-center'>
+				<div className='flex gap-x-3 mb-10 items-start'>
 					<p className='text-lg text-gray-200'>Tags: </p>
-					<div className='flex gap-x-2'>
+					<div className='flex flex-wrap gap-y-2 gap-x-2'>
 						{postData?.tags.map((tag) => (
 							<Tag key={postData._id}>{tag}</Tag>
 						))}
