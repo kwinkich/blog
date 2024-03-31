@@ -13,7 +13,7 @@ export const LastUpdateCard: React.FC<LastUpdateCardProps> = ({ data }) => {
 					<h3 className='text-xl text-gray-200 font-medium line-clamp-1'>
 						{data.title}
 					</h3>
-					<p className='text-lg text-gray-200 line-clamp-2'>
+					<p className='text-lg text-gray-200 line-clamp-1'>
 						{data.description}
 					</p>
 				</div>
