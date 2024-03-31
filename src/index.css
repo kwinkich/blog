@@ -16,7 +16,7 @@
   }
 
   .h1 {
-    @apply text-4xl text-white font-bold
+    @apply text-4xl text-white font-bold;
   }
 
   .flex-flex-col {

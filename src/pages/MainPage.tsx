@@ -26,14 +26,13 @@ export default function MainPage() {
 	return (
 		<main className='section'>
 			<Header />
-			<div className='flex justify-between'>
-				<div>
+			<div className='sm:flex-row flex justify-between flex-col'>
+				<div className='sm:mb-0  mb-10'>
 					<h1 className='h1 mb-10'>Articles</h1>
-
 					{postsData.length === 0 ? (
 						<p className='text-xl text-white'>Empty</p>
 					) : (
-						<div className='max-w-max grid lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-x-7 gap-y-7'>
+						<div className='max-w-max grid grid-cols-1 xd:grid-cols-2  gap-x-7 gap-y-7'>
 							{postsData.map((post) => (
 								<BlogCard key={post._id} data={post} />
 							))}

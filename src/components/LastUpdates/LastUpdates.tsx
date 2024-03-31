@@ -22,7 +22,7 @@ export const LastUpdates = () => {
 	}, []);
 
 	return (
-		<section>
+		<section className='sm:mb-0 mb-12'>
 			<h2 className='text-3xl text-gray-200 font-semibold mb-10'>
 				Last Updates
 			</h2>
