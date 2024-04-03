@@ -12,7 +12,7 @@ export default function MainPage() {
 		const fetchPosts = async () => {
 			try {
 				const response = await axios.get(
-					'https://blog-server-ruvh.onrender.com/api/posts'
+					'https://blog-server-oerc.onrender.com/api/posts'
 				);
 				setPostsData(response.data);
 			} catch (err) {
