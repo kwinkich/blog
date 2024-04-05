@@ -10,7 +10,7 @@ export const LastUpdates = () => {
 		const fetchPosts = async () => {
 			try {
 				const response = await axios.get(
-					'https://blog-server-oerc.onrender.com/api/news'
+					'https://blog-server-3xmv.onrender.com/api/news'
 				);
 				setNewsData(response.data);
 			} catch (err) {

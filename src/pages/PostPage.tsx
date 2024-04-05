@@ -13,7 +13,7 @@ export default function PostPage() {
 		const getPost = async () => {
 			try {
 				const response = await axios.get(
-					`https://blog-server-oerc.onrender.com/api/posts/${id}`
+					`https://blog-server-3xmv.onrender.com/api/posts/${id}`
 				);
 				setPostData(response.data);
 			} catch (err) {

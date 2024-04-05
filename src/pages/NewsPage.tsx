@@ -12,7 +12,7 @@ export default function NewsPage() {
 		const getNewsById = async () => {
 			try {
 				const newData = await axios.get(
-					`https://blog-server-oerc.onrender.com/api/news/${id}`
+					`https://blog-server-3xmv.onrender.com/api/news/${id}`
 				);
 				setNewsData(newData.data);
 			} catch (err) {
